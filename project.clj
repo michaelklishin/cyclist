@@ -1,5 +1,5 @@
-(defproject clojurewerkz/cyclic "1.0.0-SNAPSHOT"
-  :description "FIXME"
+(defproject clojurewerkz/cyclic "1.0.0-beta1"
+  :description "Tiny library that detects cyclic dependencies between any named entities"
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [clojurewerkz/support "0.15.0"]]
   :profiles {:1.3 {:dependencies [[org.clojure/clojure "1.3.0"]]}
