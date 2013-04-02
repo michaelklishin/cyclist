@@ -13,7 +13,7 @@
          b false
          c false)))
 
-(deftest test-individual-node-detection-with-mutual-dependency
+(deftest ^:focus test-individual-node-detection-with-mutual-dependency
   (let [a {:name 'a :dependencies #{'b}}
         b {:name 'b :dependencies #{'a}}
         c {:name 'c :dependencies #{}}
@@ -88,7 +88,6 @@
          a true
          b true
          c true
-         ;; TODO: d false
          e false)))
 
 (deftest test-individual-node-detection-with-circular-dependency6
@@ -100,7 +99,28 @@
         xs [a b c d e]]
     (are [x res] (is (= res (cy/has-cyclic-dependencies? x xs)))
          a true
-         ;; TODO: b false
          c true
          d true
          e true)))
+
+
+(deftest test-detection-with-no-dependencies
+  (let [a {:name 'a :dependencies #{'b}}
+        b {:name 'b :dependencies #{'c}}
+        c {:name 'c :dependencies #{}}
+        xs [a b c]]
+    (is (nil? (cy/detect xs)))))
+
+(deftest ^:focus test-individual-node-detection-with-mutual-dependency
+  (let [a {:name 'a :dependencies #{'b}}
+        b {:name 'b :dependencies #{'a}}
+        c {:name 'c :dependencies #{}}
+        xs [a b c]]
+    (is (cy/detect xs))))
+
+(deftest test-individual-node-detection-with-circular-dependency1
+  (let [a {:name 'a :dependencies #{'b}}
+        b {:name 'b :dependencies #{'c}}
+        c {:name 'c :dependencies #{'a}}
+        xs [a b c]]
+    (is (cy/detect xs))))
