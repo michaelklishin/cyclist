@@ -1,29 +1,19 @@
-# Project Name
+# Cyclist, a Cyclic Dependencies Detection Library
 
-cyclic is ....
-
-
-## Project Goals
-
-TODO
-
-
-## Community
-
-[... has a mailing list](https://groups.google.com/forum/#!forum/clojure-...). Feel free to join it and ask any questions you may have.
-
-To subscribe for announcements of releases, important changes and so on, please follow [@ClojureWerkz](https://twitter.com/#!/clojurewerkz) on Twitter.
+Cyclist is a tiny Clojure library that detects cyclic dependencies between named
+entities.
 
 
 ## Project Maturity
 
-... is *very* young.
+Cyclist is a young library. We do not rule out public API changes before
+the final `1.0` release.
 
 
 
 ## Artifacts
 
-... artifacts are [released to Clojars](https://clojars.org/clojurewerkz/cyclic). If you are using Maven, add the following repository
+Cyclist artifacts are [released to Clojars](https://clojars.org/clojurewerkz/cyclist). If you are using Maven, add the following repository
 definition to your `pom.xml`:
 
 ``` xml
@@ -37,33 +27,85 @@ definition to your `pom.xml`:
 
 With Leiningen:
 
-    [clojurewerkz/cyclic "1.0.0-alpha1"]
+    [clojurewerkz/cyclist "1.0.0-beta2"]
 
 
 With Maven:
 
     <dependency>
       <groupId>clojurewerkz</groupId>
-      <artifactId>cyclic</artifactId>
-      <version>1.0.0-alpha1</version>
+      <artifactId>cyclist</artifactId>
+      <version>1.0.0-beta2</version>
     </dependency>
 
 
 
-## Getting Started
+## Documentation
 
-Please refer to our [Getting Started guide](...). Don't hesitate to join our [mailing list](https://groups.google.com/forum/#!forum/clojure-...) and ask questions, too!
+Cyclist operates on maps with two keys: `:name` and `:dependencies`:
+
+``` clojure
+{:name :a :dependencies #{:b}}
+{:name :b :dependencies #{:c}}
+{:name :c :dependencies #{}}
+```
+
+`clojurewerkz.cyclist.dependencies/has-cyclic-dependecies?` takes node and
+a collection of all graph nodes and returns true if the graph has cyclic
+dependencies:
+
+``` clojure
+(let [a {:name 'a :dependencies #{'b}}
+      b {:name 'b :dependencies #{'c}}
+      c {:name 'c :dependencies #{}}
+      xs [a b c]]
+  (cy/has-cyclic-dependencies? x xs))
+;= false
+
+(let [a {:name 'a :dependencies #{'b}}
+      b {:name 'b :dependencies #{'a}}
+      c {:name 'c :dependencies #{}}
+      xs [a b c]]
+  (cy/has-cyclic-dependencies? x xs))
+;= true
+```
+
+`clojurewerkz.cyclist.dependencies/detect` takes a collection of graph nodes
+and returns the first one that has cyclic dependencies:
+
+``` clojure
+(let [a {:name 'a :dependencies #{'b}}
+      b {:name 'b :dependencies #{'c}}
+      c {:name 'c :dependencies #{}}
+      xs [a b c]]
+  (cy/detect xs))
+;= nil
+
+(let [a {:name 'a :dependencies #{'b}}
+      b {:name 'b :dependencies #{'a}}
+      c {:name 'c :dependencies #{}}
+      xs [a b c]]
+  (cy/detect xs))
+;= {:name 'a :dependencies #{'b}}
+
+(let [a {:name 'a :dependencies #{'b}}
+      b {:name 'b :dependencies #{'c}}
+      c {:name 'c :dependencies #{'a}}
+      xs [a b c]]
+  (cy/detect xs))
+;= {:name 'a :dependencies #{'b}}
+```
 
 
-## Documentation & Examples
+## Community
 
-Our documentation site is not yet live, sorry.
+To subscribe for announcements of releases, important changes and so on, please follow [@ClojureWerkz](https://twitter.com/#!/clojurewerkz) on Twitter.
 
 
 
 ## Supported Clojure versions
 
-cyclic is built from the ground up for Clojure 1.5.1 and up.
+Cyclic is built from the ground up for Clojure 1.3 and up.
 
 
 ## Continuous Integration Status
@@ -72,9 +114,9 @@ cyclic is built from the ground up for Clojure 1.5.1 and up.
 
 
 
-## ... Is a ClojureWerkz Project
+## Cyclist Is a ClojureWerkz Project
 
-cyclic is part of the [group of Clojure libraries known as ClojureWerkz](http://clojurewerkz.org), together with
+Cyclist is part of the [group of Clojure libraries known as ClojureWerkz](http://clojurewerkz.org), together with
  * [Monger](http://clojuremongodb.info)
  * [Langohr](https://github.com/michaelklishin/langohr)
  * [Elastisch](https://github.com/clojurewerkz/elastisch)
@@ -85,7 +127,7 @@ cyclic is part of the [group of Clojure libraries known as ClojureWerkz](http://
 
 ## Development
 
-cyclic uses [Leiningen
+Cyclist uses [Leiningen
 2](https://github.com/technomancy/leiningen/blob/master/doc/TUTORIAL.md). Make
 sure you have it installed and then run tests against supported
 Clojure versions using
