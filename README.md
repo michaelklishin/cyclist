@@ -105,7 +105,7 @@ To subscribe for announcements of releases, important changes and so on, please 
 
 ## Supported Clojure versions
 
-Cyclic is built from the ground up for Clojure 1.3 and up.
+Cyclic is built from the ground up for Clojure 1.4 and up.
 
 
 ## Continuous Integration Status
