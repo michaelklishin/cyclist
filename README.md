@@ -110,7 +110,7 @@ Cyclic is built from the ground up for Clojure 1.3 and up.
 
 ## Continuous Integration Status
 
-[![Continuous Integration status](https://secure.travis-ci.org/clojurewerkz/cyclic.png)](http://travis-ci.org/clojurewerkz/cyclic)
+[![Continuous Integration status](https://secure.travis-ci.org/clojurewerkz/cyclist.png)](http://travis-ci.org/clojurewerkz/cyclist)
 
 
 
