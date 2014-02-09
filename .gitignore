@@ -7,3 +7,4 @@ TAGS
 checkouts/*
 target/*
 .idea/*
+.nrepl-*
