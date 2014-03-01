@@ -6,7 +6,7 @@
 <<<<<<< HEAD
              :1.6 {:dependencies [[org.clojure/clojure "1.6.0-beta2"]]}
 =======
-             :1.6 {:dependencies [[org.clojure/clojure "1.6.0-beta1"]]}
+             :1.6 {:dependencies [[org.clojure/clojure "1.6.0-beta2"]]}
 >>>>>>> 019ed131cf39038367119a3b671c7d53a7a6e7eb
              :master {:dependencies [[org.clojure/clojure "1.6.0-master-SNAPSHOT"]]}
              :dev {:resource-paths ["test/resources"]
