@@ -3,11 +3,7 @@
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [clojurewerkz/support "0.15.0"]]
   :profiles {:1.4 {:dependencies [[org.clojure/clojure "1.4.0"]]}
-<<<<<<< HEAD
              :1.6 {:dependencies [[org.clojure/clojure "1.6.0-beta2"]]}
-=======
-             :1.6 {:dependencies [[org.clojure/clojure "1.6.0-beta2"]]}
->>>>>>> 019ed131cf39038367119a3b671c7d53a7a6e7eb
              :master {:dependencies [[org.clojure/clojure "1.6.0-master-SNAPSHOT"]]}
              :dev {:resource-paths ["test/resources"]
                    :plugins [[codox "0.6.6"]]
