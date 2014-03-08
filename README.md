@@ -27,7 +27,7 @@ definition to your `pom.xml`:
 
 With Leiningen:
 
-    [clojurewerkz/cyclist "1.0.0-beta2"]
+    [clojurewerkz/cyclist "1.0.0"]
 
 
 With Maven:
@@ -35,7 +35,7 @@ With Maven:
     <dependency>
       <groupId>clojurewerkz</groupId>
       <artifactId>cyclist</artifactId>
-      <version>1.0.0-beta2</version>
+      <version>1.0.0</version>
     </dependency>
 
 
