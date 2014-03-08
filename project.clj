@@ -1,7 +1,7 @@
 (defproject clojurewerkz/cyclist "1.1.0-SNAPSHOT"
   :description "Tiny library that detects cyclic dependencies between any named entities"
   :dependencies [[org.clojure/clojure "1.5.1"]
-                 [clojurewerkz/support "0.15.0"]]
+                 [clojurewerkz/support "0.20.0"]]
   :profiles {:1.4 {:dependencies [[org.clojure/clojure "1.4.0"]]}
              :1.6 {:dependencies [[org.clojure/clojure "1.6.0-beta2"]]}
              :master {:dependencies [[org.clojure/clojure "1.6.0-master-SNAPSHOT"]]}
