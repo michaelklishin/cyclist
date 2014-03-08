@@ -1,4 +1,4 @@
-(defproject clojurewerkz/cyclist "1.0.0-beta3-SNAPSHOT"
+(defproject clojurewerkz/cyclist "1.0.0"
   :description "Tiny library that detects cyclic dependencies between any named entities"
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [clojurewerkz/support "0.15.0"]]
