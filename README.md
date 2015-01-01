@@ -6,8 +6,7 @@ entities.
 
 ## Project Maturity
 
-Cyclist is a young library. We do not rule out public API changes before
-the final `1.0` release.
+Cyclist is not a young library.
 
 
 
